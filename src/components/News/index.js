@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../Provider';
 import axios from 'axios';
-// import { ReactComponent as FavoriteEmptyIcon } from '../../assets/favorite-empty.svg'
+import { ReactComponent as FavoriteEmptyIcon } from '../../assets/favorite-empty.svg'
 import { ReactComponent as FavoriteFilledIcon } from '../../assets/favorite-filled.svg'
 import { ReactComponent as ClockIcon } from '../../assets/clock.svg'
 import classes from './styles.module.css'
@@ -11,7 +11,6 @@ export const News = () => {
     const [state, setState] = useContext(AppContext)
 
     useEffect(() => {
-        console.log(state)
         let tempNews = []
         axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${state.option}&page=${state.page}&hitsPerPage=8`, {
           })
@@ -26,7 +25,6 @@ export const News = () => {
     return (
         <div className={classes.newsContainer}>
             {news.map((element, index) => (
-                // story_url
                 <div key={index} className={classes.singleNews}>
                     <a className={classes.singleNewsContentContainer} href={element.story_url} target="_blank" rel="noreferrer">
                         <div className={classes.singleNewsContent}>
@@ -37,9 +35,8 @@ export const News = () => {
                             <div className={classes.singleNewsContentText}>{element?.story_title}</div>
                         </div>
                     </a>
-                    <div className={classes.favoriteContainer}>
-                        {/* {element.favorite === true ? <FavoriteFilledIcon /> : <FavoriteEmptyIcon />} */}
-                        <FavoriteFilledIcon />
+                    <div className={classes.favoriteContainer} onClick={() => setState({...state, favorites: [...state.favorites, element.objectID]})}>
+                        {state.favorites.includes(element.objectID) === true ? <FavoriteFilledIcon /> : <FavoriteEmptyIcon />}
                     </div>
                 </div>
             ))}

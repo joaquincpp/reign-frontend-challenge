@@ -15,7 +15,6 @@ export const Dropdown = () => {
     }
 
     useEffect(() => {
-        console.log(state)
       }, [state]);
 
     const options = [

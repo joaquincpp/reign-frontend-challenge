@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AppContext } from '../Provider';
 import classes from './styles.module.css'
 import AngularLogo from '../../assets/angular-logo.png';
 import ReactLogo from '../../assets/react-logo.png';
 import VueLogo from '../../assets/vue-logo.png';
 
 export const Dropdown = () => {
-    let query = localStorage.getItem('reign.localStorage');
-    const [option, setOption] = useState(
-        (query && JSON.parse(query).query !== "") ? JSON.parse(query).query : "");
+    const [state, setState] = useContext(AppContext)
     const [dropdown, setDropdown] = useState(false);
 
     const setOptionHandler = (optionName) => {
-        setOption(optionName)
+        setState({...state, option: optionName, page: 1})
         setDropdown(false)
     }
 
     useEffect(() => {
-        let json = { query:  option };
-        localStorage.setItem('reign.localStorage', JSON.stringify(json));
-      }, [option]);
+        console.log(state)
+      }, [state]);
 
     const options = [
         {
@@ -34,11 +32,12 @@ export const Dropdown = () => {
             name: "VueJS"
         },
     ]
+    
     return (
         <div className={classes.dropdownContainer}>
             <button type="button" className={classes.dropdownInput} onClick={() => setDropdown(!dropdown)}>
                 <span className={classes.dropdownInputText}>
-                    {option === "" ? "Select your news" : option}
+                    {state.option === undefined ? "Select your news" : state.option}
                 </span>
                 <span className={[classes.arrow, classes.down].join(" ")} />
             </button>

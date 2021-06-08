@@ -21,9 +21,16 @@
 }
 
 .singleNewsContentContainer {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    padding: 14px 26px;
+    height: 100%;
+    padding: 0px 26px;
     width: calc(100% - 120px);
+}
+
+.singleNewsContent {
+    padding: 14px 0px;
 }
 
 .singleNewsContentPublished {

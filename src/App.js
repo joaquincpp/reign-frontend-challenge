@@ -1,3 +1,4 @@
+import { Provider } from './components/Provider';
 import { Header } from './components/Header';
 import { Tabs } from './components/Tabs';
 import { Dropdown } from './components/Dropdown';
@@ -7,7 +8,7 @@ import classes from './styles.module.css'
 
 function App() {
   return (
-    <>
+    <Provider>
       <Header />
       <div className={classes.body}>
         <section className={classes.tabsSection}>
@@ -23,7 +24,7 @@ function App() {
           <Pagination />
         </section>
       </div>
-    </>
+    </Provider>
   );
 }
 

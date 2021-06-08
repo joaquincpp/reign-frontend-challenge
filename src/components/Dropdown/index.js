@@ -32,7 +32,7 @@ export const Dropdown = () => {
                 <span className={classes.dropdownInputText}>
                     {option}
                 </span>
-                <span className={classes.arrow} />
+                <span className={[classes.arrow, classes.down].join(" ")} />
             </button>
             {dropdown === true && (
                 <div className={classes.optionsSelector}>

@@ -2,6 +2,7 @@ import { Header } from './components/Header';
 import { Tabs } from './components/Tabs';
 import { Dropdown } from './components/Dropdown';
 import { News } from './components/News';
+import { Pagination } from './components/Pagination';
 import classes from './styles.module.css'
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         </section>
         <section className={classes.newsSection}>
           <News />
+        </section>
+        <section className={classes.paginationSection}>
+          <Pagination />
         </section>
       </div>
     </>

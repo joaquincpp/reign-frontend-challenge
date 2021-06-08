@@ -35,7 +35,7 @@ export const News = () => {
                         <div className={classes.singleNewsContent}>
                             <div className={classes.singleNewsContentPublished}>
                                 <ClockIcon className={classes.singleNewsClockIcon}/>
-                                {`${moment(element.created_at).fromNow().replace("an", "1")} by ${element.author}`}
+                                {`${moment(element.created_at).fromNow().replace(/\b(?:an|a)\b/gi, "1")} by ${element.author}`}
                             </div>
                             <div className={classes.singleNewsContentText}>{element?.story_title}</div>
                         </div>

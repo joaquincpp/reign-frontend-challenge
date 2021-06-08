@@ -1,4 +1,13 @@
+.body {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
 .tabsSection {
     text-align: center;
     padding: 70px 0px 63px;
+}
+
+.dropdownSection {
+    padding-bottom: 23px;
 }

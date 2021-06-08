@@ -1,4 +1,4 @@
-button {
+.defaultTab {
     width: 98px;
     height: 31px;
     background: transparent;
@@ -13,15 +13,15 @@ button {
     z-index: 1;
 }
 
-button:first-child {
+.defaultTab:first-child {
     border-radius: 2px 0px 0px 2px;
     right: -1px;
 }
-button:last-child {
+.defaultTab:last-child {
     border-radius: 0px 2px 2px 0px;
 }
 
-.buttonActive {
+.activeTab {
     border: 1px solid #1797ff;
     color: #1797ff;
     z-index: 0;

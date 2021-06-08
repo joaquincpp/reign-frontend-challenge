@@ -10,7 +10,6 @@
     line-height: 1.75;
     cursor: pointer;
     position: relative;
-    z-index: 1;
 }
 
 .defaultTab:first-child {
@@ -24,5 +23,5 @@
 .activeTab {
     border: 1px solid #1797ff;
     color: #1797ff;
-    z-index: 0;
+    z-index: 1;
 }

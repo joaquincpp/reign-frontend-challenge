@@ -3,6 +3,7 @@ import classes from './styles.module.css'
 
 export const Tabs = () => {
     const [tab, setTab] = useState(0);
+
     const tabs = [
         {
             name: "All"

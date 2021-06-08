@@ -3,10 +3,19 @@ import classes from './styles.module.css'
 
 export const Tabs = () => {
     const [tab, setTab] = useState(0);
+    const tabs = [
+        {
+            name: "All"
+        },
+        {
+            name: "My faves"
+        },
+        ]
     return (
         <div className={classes.tabsContainer}>
-            <button type="button" className={[tab === 0 ? classes.activeTab : null, classes.defaultTab].join(" ") } onClick={() => setTab(0)}>All</button>
-            <button type="button" className={[tab === 1 ? classes.activeTab : null ,classes.defaultTab].join(" ") } onClick={() => setTab(1)}>My faves</button>
+            {tabs.map((element, index) => (
+                <button type="button" className={[tab === index ? classes.activeTab : null, classes.defaultTab].join(" ") } onClick={() => setTab(index)}>{element.name}</button>
+            ))}
         </div>
     );
 };

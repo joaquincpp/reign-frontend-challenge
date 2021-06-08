@@ -1,0 +1,28 @@
+button {
+    width: 98px;
+    height: 31px;
+    background: transparent;
+    border: 1px solid #d6d6d6;
+    color: #606060;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.75;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+button:first-child {
+    border-radius: 2px 0px 0px 2px;
+    right: -1px;
+}
+button:last-child {
+    border-radius: 0px 2px 2px 0px;
+}
+
+.buttonActive {
+    border: 1px solid #1797ff;
+    color: #1797ff;
+    z-index: 0;
+}

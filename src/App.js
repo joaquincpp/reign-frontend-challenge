@@ -1,6 +1,7 @@
 import { Header } from './components/Header';
 import { Tabs } from './components/Tabs';
 import { Dropdown } from './components/Dropdown';
+import { News } from './components/News';
 import classes from './styles.module.css'
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
         </section>
         <section className={classes.dropdownSection}>
           <Dropdown />
+        </section>
+        <section className={classes.newsSection}>
+          <News />
         </section>
       </div>
     </>

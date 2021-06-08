@@ -25,7 +25,7 @@ export const Dropdown = () => {
             icon: VueLogo,
             name: "VueJS"
         },
-        ]
+    ]
     return (
         <div className={classes.dropdownContainer}>
             <button type="button" className={classes.dropdownInput} onClick={() => setDropdown(!dropdown)}>

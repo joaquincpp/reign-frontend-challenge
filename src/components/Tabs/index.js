@@ -14,7 +14,7 @@ export const Tabs = () => {
     return (
         <div className={classes.tabsContainer}>
             {tabs.map((element, index) => (
-                <button type="button" className={[tab === index ? classes.activeTab : null, classes.defaultTab].join(" ") } onClick={() => setTab(index)}>{element.name}</button>
+                <button key={index} type="button" className={[tab === index ? classes.activeTab : null, classes.defaultTab].join(" ") } onClick={() => setTab(index)}>{element.name}</button>
             ))}
         </div>
     );

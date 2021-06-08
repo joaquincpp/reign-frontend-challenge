@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { AppContext } from '../Provider';
 import classes from './styles.module.css'
 import AngularLogo from '../../assets/angular-logo.png';
@@ -13,9 +13,6 @@ export const Dropdown = () => {
         setState({...state, option: optionName, page: 1})
         setDropdown(false)
     }
-
-    useEffect(() => {
-      }, [state]);
 
     const options = [
         {

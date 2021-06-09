@@ -1,7 +1,7 @@
 .paginationButton {
     margin: 0px 4px;
     height: 32px;
-    width: 32px;
+    min-width: 32px;
     background: transparent;
     border: 1px solid #d9d9d9;
     border-radius: 6px;

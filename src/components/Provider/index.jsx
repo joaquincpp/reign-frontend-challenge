@@ -6,14 +6,16 @@ const Provider = ({ children }) => {
   const storage = localStorage.getItem('reign.localStorage');
 
   const [state, setState] = useState({
-    tab: JSON.parse(storage).tab || 'All',
-    option: JSON.parse(storage).option || undefined,
+    tab: storage ? JSON.parse(storage).tab : 'All',
+    option: storage ? JSON.parse(storage).option : '',
+    favorites: storage ? JSON.parse(storage).favorites : [],
+    loading: false,
+    pages: undefined,
     page: 1,
-    favorites: JSON.parse(storage).favorites || [],
   });
 
   useEffect(() => {
-    localStorage.setItem('reign.localStorage', JSON.stringify(state));
+    localStorage.setItem('reign.localStorage', JSON.stringify({ tab: state.tab, option: state.option, favorites: state.favorites }));
   }, [state]);
 
   return (
@@ -23,10 +25,10 @@ const Provider = ({ children }) => {
   );
 };
 
-export default Provider;
-
-export const AppContext = createContext();
-
 Provider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default Provider;
+
+export const AppContext = createContext();

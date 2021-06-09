@@ -10,23 +10,32 @@ import classes from './styles.module.css';
 const SingleNews = ({ data }) => {
   const [state, setState] = useContext(AppContext);
 
+  const favoriteHandler = (id) => {
+    if (state.favorites.includes(id) === true) {
+      const filteredFavorites = state.favorites.filter((value) => value !== id);
+      setState({ ...state, favorites: filteredFavorites });
+    } else {
+      setState({ ...state, favorites: [id, ...state.favorites] });
+    }
+  };
+
   return (
-    <div className={classes.singleNews}>
-      <a className={classes.singleNewsContentContainer} href={data.story_url} target="_blank" rel="noreferrer">
+    <div className={[classes.singleNews, state.loading ? classes.animation : null].join(' ')}>
+      <a className={classes.singleNewsContentContainer} href={data.story_url || data.url} target="_blank" rel="noreferrer">
         <div className={classes.singleNewsContent}>
           <div className={classes.singleNewsContentPublished}>
             <ClockIcon className={classes.singleNewsClockIcon} />
             {`${moment(data.created_at).fromNow().replace(/\b(?:an|a)\b/gi, '1')} by ${data.author}`}
           </div>
-          <div className={classes.singleNewsContentText}>{data.story_title}</div>
+          <div className={classes.singleNewsContentText}>{data.story_title || data.title}</div>
         </div>
       </a>
       <div
         className={classes.favoriteContainer}
-        onClick={() => setState({ ...state, favorites: [...state.favorites, data.objectID] })}
+        onClick={() => favoriteHandler(data.story_id || data.id)}
         aria-hidden="true"
       >
-        {state.favorites.includes(data.objectID) === true
+        {state.favorites.includes(data.story_id || data.id) === true
           ? <FavoriteFilledIcon />
           : <FavoriteEmptyIcon />}
       </div>
@@ -34,24 +43,30 @@ const SingleNews = ({ data }) => {
   );
 };
 
-export default SingleNews;
-
 SingleNews.propTypes = {
   data: PropTypes.shape({
-    objectID: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
-    story_url: PropTypes.string.isRequired,
-    story_title: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    story_id: PropTypes.number,
+    author: PropTypes.string,
+    created_at: PropTypes.string,
+    url: PropTypes.string,
+    story_url: PropTypes.string,
+    title: PropTypes.string,
+    story_title: PropTypes.string,
   }),
 };
 
 SingleNews.defaultProps = {
   data: {
-    objectID: '2434',
-    author: 'asdas',
-    created_at: 'asd',
-    story_title: 'test',
-    story_url: 'test',
+    id: undefined,
+    story_id: undefined,
+    author: 'author',
+    created_at: Date.now(),
+    url: '#',
+    story_url: '#',
+    title: 'Title',
+    story_title: 'Title',
   },
 };
+
+export default SingleNews;

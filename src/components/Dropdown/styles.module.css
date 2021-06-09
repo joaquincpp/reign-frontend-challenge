@@ -1,3 +1,7 @@
+.dropdownContainer {
+    min-height: 32px;
+}
+
 .dropdownInput {
     display: flex;
     justify-content: space-between;

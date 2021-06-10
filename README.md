@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+<h1 align="center">Welcome to Reign's front-end challenge </h1>
+<h1 align="center"> (Infinite scrolling version) 👋 </h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Joaquin Alegre's application to Reign's front-end challenge. Deployed link <a href="https://joaquin-alegre-reign-frontend-challenge-infinite-scrolling.netlify.app/" target="_blank">here</a>.
 
-## Available Scripts
+## Install
 
-In the project directory, you can run:
+```sh
+npm install
+```
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm run start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Used libraries
 
-### `npm test`
+* axios: ^0.21.1
+* eslint: ^7.28.0
+* eslint-config-airbnb: ^18.2.1
+* moment: ^2.29.1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Comments & considerations
 
-### `npm run build`
+* UI based on <a href="https://zpl.io/2vJKgqQ" target="_blank">Zeplin's shared project</a>.
+* The developed UI is responsive and based on the design's base resolution, which is 1440x1024 pixels.
+* No UI framework was used, HTML/CSS only for building UI components.
+* CSS Modules were used to apply components styles.
+* Used style breakpoints are 1280px and 960px.
+* Preferred using SVG than PNG to ensure there's no pixelation on icons (except the ones on the dropdown, since they are not provided on Zeplin).
+* News dropdown selector was made from scratch to ensure design fidelity on all devices.
+* Used Airbnb JS Style Guide (ESLint rules, including ECMAScript 6+ and React).
+* Only two libraries were used (axios to fetch API data, and moment.js to format the news publication elapsed time.)
+* News are stacked in rows, and a maximum number of 20 items are retrieved from the API during each call, when it reached the bottom, a new request is made for more items.
+* Infinite scrolling was achieved by using the Intersection Observer API.
+* Skeleton for the news blocks were added to give the user a feedback using loading states.
+* Used React Context API to handle global states, and localStorage for a more persistent storage, as indicated.
+* I tried placing the "like" gray block under the text block for the mobile versions, but it was more difficult to scroll and press it with one hand, so I kept the desktop distribution (text block on the left, like button on the right).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Opportunity areas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Hover on "like" buttons could actually fill the heart icon before pressing it.
+* Animations and transitions to certain UI items (like fade in/out to show/hide the dropdown, or animate borders when switching tabs).
+* Hover on rows could have a different behaviour, since applying opacity is not very intuitive for a call-to-action. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Author
 
-### `npm run eject`
+👤 **Joaquin Alegre**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Github: [@joaquincpp](https://github.com/joaquincpp)
+* LinkedIn: [@joaquin-alegre](https://linkedin.com/in/joaquin-alegre)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Show your support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give a ⭐️ if this project helped you! Thank you!

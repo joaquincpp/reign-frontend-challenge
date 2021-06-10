@@ -8,7 +8,7 @@ const Pagination = () => {
   // Holds a ref to the bottom element to observe.
   const [bottom, setBottom] = React.useState(null);
   const [page, setPage] = React.useState(state.page);
-  // Holds the IntersectionOberver.
+  // Holds the IntersectionObserver.
   const bottomObserver = React.useRef(null);
 
   useEffect(() => {

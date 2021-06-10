@@ -40,6 +40,7 @@ npm run start
 * Infinite scrolling was achieved by using the Intersection Observer API.
 * Skeleton for the news blocks were added to give the user a feedback using loading states.
 * Used React Context API to handle global states, and localStorage for a more persistent storage, as indicated.
+* I applied the opacity on hover to the whole row using one single selector (instead of applying it to all its children). I wanted to be as loyal as possible to the provided design, and applying the opacity to the children doesn't affect the border-color, and it can lead to multiple overlapping layers of opacity.
 * I tried placing the "like" gray block under the text block for the mobile versions, but it was more difficult to scroll and press it with one hand, so I kept the desktop distribution (text block on the left, like button on the right).
 
 ## Opportunity areas
@@ -47,6 +48,7 @@ npm run start
 * Hover on "like" buttons could actually fill the heart icon before pressing it.
 * Animations and transitions to certain UI items (like fade in/out to show/hide the dropdown, or animate borders when switching tabs).
 * Hover on rows could have a different behaviour, since applying opacity is not very intuitive for a call-to-action. 
+* UX related improvements.
 
 ## Author
 

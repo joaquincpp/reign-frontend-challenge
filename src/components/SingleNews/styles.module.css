@@ -96,4 +96,9 @@
         opacity: 1;
     }
 
+    .singleNewsContentContainer {
+        padding: 0px 15px;
+        width: calc(100% - 98px);
+    }
+
 }

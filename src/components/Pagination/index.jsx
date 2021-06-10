@@ -9,6 +9,10 @@ const Pagination = () => {
 
   // Increases or decreases iterator variable depending on the direction the pagination goes.
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     if ((Number.isInteger((page - 1) / 9)) && page > (iterator * 9) + 1) {
       setIterator((page - 1) / 9);
     }

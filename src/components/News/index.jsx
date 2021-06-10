@@ -41,7 +41,6 @@ const News = () => {
     const tempNews = [];
     // Executes only on all posts tab
     if (state.tab === 'All') {
-      // setNews([]);
       setLoading(true);
       axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${state.option}&page=${state.page}&hitsPerPage=8`, {})
         .then((response) => {
@@ -66,7 +65,6 @@ const News = () => {
     const tempNews = [];
     // Executes only on favorite posts tab
     if (state.tab === 'My faves') {
-      // setNews([]);
       setLoading(true);
       // Function that gets all favorites data
       // by making one request to the API per favorite stored on localStorage.

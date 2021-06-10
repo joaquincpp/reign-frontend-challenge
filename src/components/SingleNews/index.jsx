@@ -26,27 +26,31 @@ const SingleNews = ({ data }) => {
   return (
     <div className={[classes.singleNews, state.loading ? classes.animation : null].join(' ')}>
       {/* White background container with the post's text and link to its url.  */}
-      <a className={classes.singleNewsContentContainer} href={data.story_url || data.url} target="_blank" rel="noreferrer">
-        <div className={classes.singleNewsContent}>
-          <div className={classes.singleNewsContentPublished}>
-            <ClockIcon className={classes.singleNewsClockIcon} />
-            {/* Formats the post's date to the format 'X hours/days/weeks ago'
-            plus its author's name. */}
-            {`${moment(data.created_at).fromNow().replace(/\b(?:an|a)\b/gi, '1')} by ${data.author}`}
+      {(data.id || data.story_id) && (
+        <>
+          <a className={classes.singleNewsContentContainer} href={data.story_url || data.url} target="_blank" rel="noreferrer">
+            <div className={classes.singleNewsContent}>
+              <div className={classes.singleNewsContentPublished}>
+                <ClockIcon className={classes.singleNewsClockIcon} />
+                {/* Formats the post's date to the format 'X hours/days/weeks ago'
+                plus its author's name. */}
+                {`${moment(data.created_at).fromNow().replace(/\b(?:an|a)\b/gi, '1')} by ${data.author}`}
+              </div>
+              <div className={classes.singleNewsContentText}>{data.story_title || data.title}</div>
+            </div>
+          </a>
+          {/* Gray background container with the favorite icon. */}
+          <div
+            className={classes.favoriteContainer}
+            onClick={() => favoriteHandler(data.story_id || data.id)}
+            aria-hidden="true"
+          >
+            {state.favorites.includes(data.story_id || data.id) === true
+              ? <FavoriteFilledIcon />
+              : <FavoriteEmptyIcon />}
           </div>
-          <div className={classes.singleNewsContentText}>{data.story_title || data.title}</div>
-        </div>
-      </a>
-      {/* Gray background container with the favorite icon. */}
-      <div
-        className={classes.favoriteContainer}
-        onClick={() => favoriteHandler(data.story_id || data.id)}
-        aria-hidden="true"
-      >
-        {state.favorites.includes(data.story_id || data.id) === true
-          ? <FavoriteFilledIcon />
-          : <FavoriteEmptyIcon />}
-      </div>
+        </>
+      )}
     </div>
   );
 };

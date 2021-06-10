@@ -16,11 +16,28 @@
     height: 24px;
 }
 
-/* Responsive - Mobile */
+/* Responsive - Medium screens */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1280px) {
 
     .headerContainer {
+        padding: 0px 40px;
+    }
+
+}
+
+/* Responsive - Small screens */
+
+@media only screen and (max-width: 960px) {
+
+    header {
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .headerContainer {
+        height: 96px;
         justify-content: center;
     }
 

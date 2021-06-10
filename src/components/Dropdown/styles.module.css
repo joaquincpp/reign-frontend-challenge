@@ -71,3 +71,16 @@
     line-height: 1.57;
     color: #343434;
 }
+
+@media only screen and (max-width: 960px) {
+
+    .dropdownInput {
+        margin: 0 auto;
+    }
+
+    .optionsSelector {
+        transform: translate(-50%, 0);
+        left: 50%;
+    }
+
+}

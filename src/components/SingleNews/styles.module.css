@@ -1,15 +1,9 @@
-.newsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 488px;
-}
-
 .singleNews {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 15px 0px;
+    height: 90px;
     min-height: 90px;
     width: calc(50% - 20px);
     border-radius: 6px;
@@ -49,7 +43,6 @@
 
 .singleNewsContent {
     width: 100%;
-    padding: 14px 0px;
 }
 
 .singleNewsContentPublished {
@@ -82,4 +75,17 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 960px) {
+
+    .singleNews {
+        width: 100%;
+        height: 100px;
+    }
+
+    .singleNews:hover {
+        opacity: 1;
+    }
+
 }

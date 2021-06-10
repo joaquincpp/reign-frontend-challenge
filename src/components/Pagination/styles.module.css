@@ -44,3 +44,12 @@ button[disabled]{
     left: 1px;
 }
 
+/* Responsive - Small screens */
+
+@media only screen and (max-width: 960px) {
+
+    .paginationButton {
+        margin: 10px;
+    }
+
+}

@@ -73,7 +73,7 @@ const News = () => {
           state.favorites.slice(
             (state.page - 1) * 8, state.page * 8,
           ).map(async (favorite) => {
-            await axios.get(`http://hn.algolia.com/api/v1/items/${favorite}`, {})
+            await axios.get(`https://hn.algolia.com/api/v1/items/${favorite}`, {})
               .then((result) => tempNews.push(result.data));
           }),
         ).then(() => {

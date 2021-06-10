@@ -93,7 +93,7 @@ const News = () => {
     <div className={classes.newsContainer}>
       {loading === false ? (
         news.map((element, index) => (
-          <SingleNews data={element} key={element.created_at_i + element.story_id} position={index < 4 ? 'left' : 'right'} />
+          <SingleNews data={element} key={`${element.created_at_i}_${element.author}`} position={index < 4 ? 'left' : 'right'} />
         ))
       ) : (
         loadingSkeleton()

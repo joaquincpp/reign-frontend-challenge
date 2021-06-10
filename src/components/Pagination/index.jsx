@@ -46,7 +46,7 @@ const Pagination = () => {
   };
 
   return (
-    (state.loading === false || page > 0) && (
+    (pages > 0) && (
       <div className={classes.paginationContainer}>
         {/* Previous page button. */}
         <button

@@ -1,6 +1,6 @@
 button:disabled,
 button[disabled]{
-  opacity: 40%;
+  opacity: 0.33;
   cursor: default;
 }
 

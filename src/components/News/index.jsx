@@ -24,10 +24,10 @@ const News = () => {
     }
   }, [state, loading, setState]);
 
+  // Function that creates skeleton for SingleNews component
   const loadingSkeleton = () => {
     const loadingNews = [];
     for (let i = 1; i <= 8; i += 1) {
-      // Limits the buttons to the number of maximum available pages.
       loadingNews.push(
         <SingleNews data={{}} key={i} />,
       );
@@ -65,10 +65,10 @@ const News = () => {
     const tempNews = [];
     // Executes only on favorite posts tab
     if (state.tab === 'My faves') {
-      setLoading(true);
       // Function that gets all favorites data
-      // by making one request to the API per favorite stored on localStorage.
+      // by making one request to the API per favorite stored localStorage.
       const getFavorites = async () => {
+        setLoading(true);
         Promise.all(
           state.favorites.slice(
             (state.page - 1) * 8, state.page * 8,
@@ -86,7 +86,8 @@ const News = () => {
       };
       getFavorites();
     }
-  }, [state.favorites, state.page, state.tab]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.page, state.tab]);
 
   return (
     <div className={classes.newsContainer}>

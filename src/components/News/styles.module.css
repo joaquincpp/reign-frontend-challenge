@@ -1,14 +1,15 @@
 .newsContainer {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    height: 488px;
+    flex-direction: row;
+    height: auto;
+    justify-content: space-between
 }
 
 @media only screen and (max-width: 960px) {
     
     .newsContainer {
-        height: auto;
+        flex-direction: column;
     }
 
 }

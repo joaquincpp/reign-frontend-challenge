@@ -7,15 +7,8 @@ import SingleNews from '../SingleNews';
 const News = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [pages, setPages] = useState(0);
+  const [, setPages] = useState(0);
   const [state, setState] = useContext(AppContext);
-
-  // Hook to set local number of pages state to global context
-  useEffect(() => {
-    if (pages !== state.pages) {
-      setState({ ...state, pages });
-    }
-  }, [state, pages, setState]);
 
   // Hook to set local loading state to global context
   useEffect(() => {
@@ -27,7 +20,7 @@ const News = () => {
   // Function that creates skeleton for SingleNews component
   const loadingSkeleton = () => {
     const loadingNews = [];
-    for (let i = 1; i <= 8; i += 1) {
+    for (let i = 1; i <= 20; i += 1) {
       loadingNews.push(
         <SingleNews data={{}} key={i} position={i <= 4 ? 'left' : 'right'} />,
       );
@@ -38,11 +31,11 @@ const News = () => {
   // Hook that calls the API to get all posts, using the dropdown selection parameter,
   // and the selected page from pagination.
   useEffect(() => {
-    const tempNews = [];
     // Executes only on all posts tab
     if (state.tab === 'All') {
+      const tempNews = [];
       setLoading(true);
-      axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${state.option}&page=${state.page}&hitsPerPage=8`, {})
+      axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${state.option}&page=${state.page}&hitsPerPage=20`, {})
         .then((response) => {
           setLoading(false);
           // Iterates over the results and only keeps the one with all the required values.
@@ -52,19 +45,22 @@ const News = () => {
           && element.created_at !== null
           && element.author !== null)
           && (tempNews.push(element)));
-          // Stores the news into the local news state.
-          setNews(tempNews);
+          // Merges the local news state with the new obtained items.
+          const mergedTempNews = state.page === 1 ? [...tempNews] : [...news, ...tempNews];
+          // Stores the news into the local temporary news state.
+          setNews(mergedTempNews);
           // Sets the total pages number on the local state from the retrieved number from the API.
           setPages(response.data.nbPages - 1);
         });
     }
-  }, [state.option, state.page, state.tab]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.tab, state.page, state.option]);
 
   // Hook that calls the API to get the data posts that are favorited and stored on localStorage.
   useEffect(() => {
-    const tempNews = [];
     // Executes only on favorite posts tab
     if (state.tab === 'My faves') {
+      const tempNews = [];
       // Function that gets all favorites data
       // by making one request to the API per favorite stored localStorage.
       const getFavorites = async () => {
@@ -78,8 +74,10 @@ const News = () => {
           }),
         ).then(() => {
           setLoading(false);
-          // Stores the news into the local news state.
-          setNews(tempNews);
+          // Merges the local news state with the new obtained items.
+          const mergedTempNews = state.page === 1 ? [...tempNews] : [...news, ...tempNews];
+          // Stores the news into the local temporary news state.
+          setNews(mergedTempNews);
           // Sets the total pages number on the local state from the localStorage data.
           setPages(Math.ceil(state.favorites.length / 8));
         });
@@ -87,13 +85,13 @@ const News = () => {
       getFavorites();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.page, state.tab]);
+  }, [state.tab, state.page]);
 
   return (
     <div className={classes.newsContainer}>
       {loading === false ? (
         news.map((element, index) => (
-          <SingleNews data={element} key={`${element.created_at_i}_${element.author}`} position={index < 4 ? 'left' : 'right'} />
+          <SingleNews data={element} key={`${element.created_at_i}_${Date.now()}_${element.id || element.objectID}`} position={index < 4 ? 'left' : 'right'} />
         ))
       ) : (
         loadingSkeleton()

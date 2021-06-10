@@ -13,11 +13,6 @@
     padding-bottom: 23px;
 }
 
-.paginationSection {
-    text-align: center;
-    padding: 81px 0px 98px 0px;
-}
-
 /* Responsive - Medium screens */
 
 @media only screen and (max-width: 1280px) {
@@ -38,10 +33,6 @@
 
     .tabsSection {
         padding: 35px 0px;
-    }
-
-    .paginationSection {
-        padding: 32px 0 64px;
     }
 
 }

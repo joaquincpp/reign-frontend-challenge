@@ -61,7 +61,7 @@ const Pagination = () => {
         {getPages()}
         {/* Next page button. */}
         <button
-          disabled={page >= pages - 1}
+          disabled={page >= pages}
           type="button"
           className={classes.paginationButton}
           onClick={() => setState({ ...state, page: page + 1 })}

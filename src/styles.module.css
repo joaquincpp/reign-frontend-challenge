@@ -12,11 +12,17 @@
     padding-bottom: 23px;
 }
 
-.newsSection {
-    min-height: 488px;
-}
-
 .paginationSection {
     text-align: center;
     padding: 81px 0px 98px 0px;
+}
+
+/* Responsive - Mobile */
+
+@media only screen and (max-width: 1366px) {
+
+    .body {
+        padding: 0px 40px;
+    }
+
 }

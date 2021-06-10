@@ -7,7 +7,7 @@ import { ReactComponent as FavoriteFilledIcon } from '../../assets/favorite-fill
 import { ReactComponent as ClockIcon } from '../../assets/clock.svg';
 import classes from './styles.module.css';
 
-const SingleNews = ({ data }) => {
+const SingleNews = ({ data, position }) => {
   // Gets the global context of the application.
   const [state, setState] = useContext(AppContext);
 
@@ -24,7 +24,7 @@ const SingleNews = ({ data }) => {
   };
 
   return (
-    <div className={[classes.singleNews, state.loading ? classes.animation : null].join(' ')}>
+    <div className={[classes.singleNews, state.loading ? classes.animation : null, position === 'left' ? classes.left : classes.right].join(' ')}>
       {/* White background container with the post's text and link to its url.  */}
       {(data.id || data.story_id) && (
         <>
@@ -66,6 +66,7 @@ SingleNews.propTypes = {
     title: PropTypes.string,
     story_title: PropTypes.string,
   }),
+  position: PropTypes.string,
 };
 
 SingleNews.defaultProps = {
@@ -79,6 +80,7 @@ SingleNews.defaultProps = {
     title: 'Title',
     story_title: 'Title',
   },
+  position: undefined,
 };
 
 export default SingleNews;

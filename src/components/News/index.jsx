@@ -29,7 +29,7 @@ const News = () => {
     const loadingNews = [];
     for (let i = 1; i <= 8; i += 1) {
       loadingNews.push(
-        <SingleNews data={{}} key={i} />,
+        <SingleNews data={{}} key={i} position={i <= 4 ? 'left' : 'right'} />,
       );
     }
     return loadingNews;
@@ -92,8 +92,8 @@ const News = () => {
   return (
     <div className={classes.newsContainer}>
       {loading === false ? (
-        news.map((element) => (
-          <SingleNews data={element} key={element.created_at_i + element.story_id} />
+        news.map((element, index) => (
+          <SingleNews data={element} key={element.created_at_i + element.story_id} position={index < 4 ? 'left' : 'right'} />
         ))
       ) : (
         loadingSkeleton()

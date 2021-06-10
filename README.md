@@ -4,7 +4,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Joaquin Alegre's application to Reign's front-end challenge. Deployed version <a href="https://joaquin-alegre-reign-frontend-challenge-pagination.netlify.app/" target="_blank">here</a>.
+> Joaquin Alegre's application to Reign's front-end challenge. Deployed link <a href="https://joaquin-alegre-reign-frontend-challenge-pagination.netlify.app/" target="_blank">here</a>.
 
 ## Install
 

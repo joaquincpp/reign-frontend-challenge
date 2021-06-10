@@ -9,11 +9,14 @@ const Dropdown = () => {
   const [state, setState] = useContext(AppContext);
   const [dropdown, setDropdown] = useState(false);
 
+  // Handles the option selection to store it on the global context and localStorage,
+  // and closes the dropdown.
   const setOptionHandler = (optionName) => {
     setState({ ...state, option: optionName, page: 1 });
     setDropdown(false);
   };
 
+  // Available options for the dropdown.
   const options = [
     {
       icon: AngularLogo,
@@ -31,14 +34,21 @@ const Dropdown = () => {
 
   return (
     <div className={classes.dropdownContainer}>
+      {/* Shows dropdown only on "All" tab. */}
       {state.tab === 'All' && (
         <>
-          <button type="button" className={classes.dropdownInput} onClick={() => setDropdown(!dropdown)}>
+          {/* Dropdown button that shows the selected option or the default placeholder. */}
+          <button
+            type="button"
+            className={classes.dropdownInput}
+            onClick={() => setDropdown(!dropdown)}
+          >
             <span className={classes.dropdownInputText}>
               {state.option === '' ? 'Select your news' : state.option}
             </span>
             <span className={[classes.arrow, classes.down].join(' ')} />
           </button>
+          {/* Shows the dropdown options in case the dropdown button was clicked. */}
           {dropdown === true && (
           <div className={classes.optionsSelector}>
             {options.map((element) => (
